@@ -7,3 +7,4 @@ export type { Testimonial } from "./testimonial";
 export type { ContactFormData, ContactInfo } from "./contact";
 export type { Stat } from "./stats";
 export type { BreadcrumbItem } from "./seo";
+export type { Campaign, CampaignCategory, CampaignStatus } from "./campaign";
