@@ -1,9 +1,10 @@
 import type { ContactInfo } from "@/types/contact";
 
 export const contactInfo: ContactInfo = {
-  address: "B-12, Sector 6, Noida, Uttar Pradesh 201301, India",
-  phone: "+91-11-4567-8900",
-  email: "info@arogyaindia.org",
+  address: "UGF 26, Signum 36 The Serenas, Sector-36 Sohna, Gurgaon, Haryana, India 122103",
+  phone: "+91-8076412030",
+  email: "care@arogyaindia.org",
+  website: "www.arogyaindia.org",
   hours: "Monday - Saturday: 9:00 AM - 6:00 PM IST",
 };
 

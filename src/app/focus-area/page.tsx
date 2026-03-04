@@ -6,21 +6,21 @@ import { FocusAreasGridSection } from "@/components/sections/focus-area/focus-ar
 import { DonateBanner } from "@/components/sections/shared/donate-banner";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "Focus Area",
+  title: "Impact",
   description:
-    "Discover Arogya India's key focus areas: accessible healthcare, hygiene & sanitation awareness, rare disease advocacy, and community health & wellness.",
+    "Discover the impact of Arogya India's initiatives: rare disease patient support, women's health & menstrual awareness, community health awareness, and school hygiene education.",
   path: "/focus-area",
 });
 
-const breadcrumbs = [{ name: "Focus Area", url: "/focus-area" }];
+const breadcrumbs = [{ name: "Impact", url: "/focus-area" }];
 
 export default function FocusAreaPage() {
   return (
     <>
       <BreadcrumbSchema items={breadcrumbs} />
       <PageHero
-        title="Our Focus Areas"
-        subtitle="The key areas where we concentrate our efforts to create the greatest impact on community health and well-being."
+        title="Our Impact"
+        subtitle="Creating meaningful change through healthcare support, awareness initiatives, and community education programs."
         breadcrumbs={breadcrumbs}
       />
       <FocusAreasGridSection />

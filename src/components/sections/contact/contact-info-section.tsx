@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Globe, Clock } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { contactInfo } from "@/data/contact-data";
 import { staggerContainer, slideUp } from "@/animations/variants";
@@ -26,9 +26,10 @@ const contactCards = [
     href: `mailto:${contactInfo.email}`,
   },
   {
-    icon: <Clock className="h-6 w-6" />,
-    title: "Working Hours",
-    content: contactInfo.hours,
+    icon: <Globe className="h-6 w-6" />,
+    title: "Website",
+    content: contactInfo.website,
+    href: `https://${contactInfo.website}`,
   },
 ];
 

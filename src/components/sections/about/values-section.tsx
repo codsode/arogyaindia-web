@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Heart, ShieldCheck, Users, TrendingUp } from "lucide-react";
+import { Heart, ShieldCheck, Users, Accessibility, Handshake } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { values } from "@/data/about-data";
@@ -10,8 +10,9 @@ import { staggerContainer, slideUp } from "@/animations/variants";
 const iconMap: Record<string, React.ReactNode> = {
   heart: <Heart className="h-6 w-6" />,
   "shield-check": <ShieldCheck className="h-6 w-6" />,
+  accessibility: <Accessibility className="h-6 w-6" />,
   users: <Users className="h-6 w-6" />,
-  "trending-up": <TrendingUp className="h-6 w-6" />,
+  handshake: <Handshake className="h-6 w-6" />,
 };
 
 export function ValuesSection() {
@@ -28,7 +29,7 @@ export function ValuesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           {values.map((value) => (
             <motion.div

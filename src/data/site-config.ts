@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Arogya India",
   description:
-    "A grassroots health-focused NGO dedicated to making healthcare accessible to all through hygiene education, patient support, health camps, and community outreach across India.",
-  shortDescription: "Making healthcare a reality for all",
+    "Arogya India is a health-focused initiative by Arogya Development Foundation dedicated to supporting patients suffering from rare diseases and other serious health conditions through financial assistance, health education, and awareness programs.",
+  shortDescription: "Healthcare Support for Those Who Need It Most",
   url: "https://www.arogyaindia.org",
   ogImage: "/og-image.jpg",
   locale: "en_IN",
@@ -14,8 +14,8 @@ export const siteConfig = {
     youtube: "https://www.youtube.com/@arogyaindia",
   },
   contact: {
-    email: "info@arogyaindia.org",
-    phone: "+91-11-4567-8900",
-    address: "B-12, Sector 6, Noida, Uttar Pradesh 201301, India",
+    email: "care@arogyaindia.org",
+    phone: "+91-8076412030",
+    address: "UGF 26, Signum 36 The Serenas, Sector-36 Sohna, Gurgaon, Haryana, India 122103",
   },
 } as const;

@@ -7,10 +7,10 @@ import { Button } from "@/components/ui/button";
 import { missionPreview } from "@/data/home-data";
 
 const highlights = [
-  "Serving 100+ communities across India",
-  "Free health camps and medical consultations",
-  "Hygiene education and kit distribution",
-  "Rare disease patient support network",
+  "Health aid for patients facing serious health challenges",
+  "Health awareness through community outreach programs",
+  "Health education to empower informed decisions",
+  "Rare disease support for affected families",
 ];
 
 export function MissionPreviewSection() {

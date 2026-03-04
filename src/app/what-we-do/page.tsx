@@ -7,20 +7,20 @@ import { ImpactSection } from "@/components/sections/programs/impact-section";
 import { DonateBanner } from "@/components/sections/shared/donate-banner";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "What We Do",
+  title: "Programs",
   description:
     "Explore Arogya India's programs including health camps, hygiene education, patient support, hygiene kit distribution, rare disease support, and community health education.",
   path: "/what-we-do",
 });
 
-const breadcrumbs = [{ name: "What We Do", url: "/what-we-do" }];
+const breadcrumbs = [{ name: "Programs", url: "/what-we-do" }];
 
 export default function WhatWeDoPage() {
   return (
     <>
       <BreadcrumbSchema items={breadcrumbs} />
       <PageHero
-        title="What We Do"
+        title="Our Programs"
         subtitle="Comprehensive programs designed to bring healthcare, education, and support to communities across India."
         breadcrumbs={breadcrumbs}
       />

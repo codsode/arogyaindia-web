@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { generatePageMetadata } from "@/lib/metadata";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { PageHero } from "@/components/sections/shared/page-hero";
+import { AboutIntroSection } from "@/components/sections/about/about-intro-section";
 import { MissionVisionSection } from "@/components/sections/about/mission-vision-section";
 import { ValuesSection } from "@/components/sections/about/values-section";
+import { FounderMessageSection } from "@/components/sections/about/founder-message-section";
 import { TeamSection } from "@/components/sections/about/team-section";
 import { TimelineSection } from "@/components/sections/about/timeline-section";
 import { DonateBanner } from "@/components/sections/shared/donate-banner";
@@ -11,7 +13,7 @@ import { DonateBanner } from "@/components/sections/shared/donate-banner";
 export const metadata: Metadata = generatePageMetadata({
   title: "About Us",
   description:
-    "Learn about Arogya India's mission, vision, values, and the dedicated team working to make healthcare accessible to all across India.",
+    "Learn about Arogya India, a public health initiative of Arogya Development Foundation committed to improving access to healthcare support, spreading health awareness, and promoting health education.",
   path: "/about",
 });
 
@@ -23,11 +25,13 @@ export default function AboutPage() {
       <BreadcrumbSchema items={breadcrumbs} />
       <PageHero
         title="About Arogya India"
-        subtitle="A grassroots health-focused NGO dedicated to bringing dignity, care, and awareness to underserved communities across India."
+        subtitle="A public health initiative of Arogya Development Foundation, committed to improving access to healthcare support, spreading health awareness, and promoting health education across communities."
         breadcrumbs={breadcrumbs}
       />
+      <AboutIntroSection />
       <MissionVisionSection />
       <ValuesSection />
+      <FounderMessageSection />
       <TeamSection />
       <TimelineSection />
       <DonateBanner />

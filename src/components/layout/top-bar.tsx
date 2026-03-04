@@ -23,7 +23,7 @@ export function TopBar() {
           </a>
         </div>
         <div className="text-xs text-primary-200">
-          Making healthcare a reality for all
+          Healthcare Support for Those Who Need It Most
         </div>
       </Container>
     </div>

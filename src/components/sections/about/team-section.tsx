@@ -21,7 +21,7 @@ export function TeamSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
         >
           {teamMembers.map((member) => (
             <motion.div

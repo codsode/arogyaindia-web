@@ -4,54 +4,54 @@ export const programs: Program[] = [
   {
     id: "health-camps",
     title: "Health Camps",
-    shortDescription: "Free medical check-ups and consultations in underserved communities.",
+    shortDescription: "Through our health camps, Arogya India aims to provide basic medical check-ups, early disease screening, and healthcare consultations to individuals who may not regularly receive medical attention.",
     description:
-      "We organize regular health camps across rural and urban underserved areas, providing free medical check-ups, consultations, and basic treatments. Our health camps have served thousands of individuals who otherwise lack access to quality healthcare. Each camp is staffed by qualified medical professionals who volunteer their time and expertise to make a difference.",
+      "Health camps are one of the most effective ways to bring essential healthcare services directly to communities that may have limited access to medical facilities. Through our health camps, Arogya India aims to provide basic medical check-ups, early disease screening, and healthcare consultations to individuals who may not regularly receive medical attention. These camps help identify potential health issues at an early stage and guide patients toward appropriate treatment. Our health camps also serve as an opportunity to educate communities about preventive healthcare practices, healthy lifestyles, and the importance of timely medical care.",
     icon: "stethoscope",
     image: "/images/programs/health-camps.webp",
   },
   {
     id: "hygiene-education",
     title: "Hygiene Education",
-    shortDescription: "Teaching communities the fundamentals of hygiene and sanitation.",
+    shortDescription: "Arogya India conducts hygiene education programs to raise awareness about essential practices such as handwashing, sanitation, clean drinking water, and disease prevention.",
     description:
-      "Our hygiene education programs reach schools and communities across India, teaching essential practices for disease prevention. Through interactive workshops, demonstrations, and educational materials, we empower communities with knowledge about handwashing, sanitation, menstrual hygiene, and safe water practices that can transform health outcomes for generations.",
+      "Good hygiene practices are fundamental to preventing many common illnesses and improving overall public health. Arogya India conducts hygiene education programs to raise awareness about essential practices such as handwashing, sanitation, clean drinking water, and disease prevention. These initiatives focus on schools, community groups, and underserved areas where access to health education may be limited. By promoting proper hygiene habits, we aim to reduce the spread of infections and help communities build healthier daily practices.",
     icon: "book-open",
     image: "/images/programs/hygiene-education.webp",
   },
   {
     id: "patient-support",
     title: "Patient Support",
-    shortDescription: "Comprehensive support for patients navigating healthcare challenges.",
+    shortDescription: "Through our patient support initiatives, Arogya India aims to assist patients who require medical help but lack sufficient financial resources.",
     description:
-      "We provide holistic support to patients dealing with chronic illnesses, rare diseases, and healthcare access barriers. Our patient support services include connecting patients with appropriate medical facilities, providing emotional counseling, assisting with treatment navigation, and offering financial guidance for medical expenses.",
+      "Many families struggle to afford medical treatment when faced with serious illnesses or rare diseases. Medical expenses, diagnostic tests, and medicines can place a significant financial burden on households. Through our patient support initiatives, Arogya India aims to assist patients who require medical help but lack sufficient financial resources. This support may include assistance with treatment costs, access to medicines, and guidance in navigating healthcare services. Our goal is to ensure that individuals facing health challenges receive the support they need during difficult times.",
     icon: "hand-heart",
     image: "/images/programs/patient-support.webp",
   },
   {
     id: "hygiene-kits",
     title: "Hygiene Kit Distribution",
-    shortDescription: "Distributing essential hygiene supplies to communities in need.",
+    shortDescription: "Arogya India distributes hygiene kits to individuals and families in underserved communities, particularly in areas where access to sanitation products is limited.",
     description:
-      "We assemble and distribute comprehensive hygiene kits containing essential supplies including soap, sanitizer, masks, sanitary pads, toothbrushes, and educational pamphlets. These kits are distributed during health camps, school visits, and community outreach events, ensuring that basic hygiene products reach those who cannot afford them.",
+      "Access to basic hygiene supplies is essential for maintaining personal health and preventing disease. Arogya India distributes hygiene kits to individuals and families in underserved communities, particularly in areas where access to sanitation products is limited. These kits may include items such as soap, sanitary products, disinfectants, and other essential hygiene materials. Through this initiative, we aim to support healthier living conditions and encourage better hygiene practices among communities.",
     icon: "package",
     image: "/images/programs/hygiene-kits.webp",
   },
   {
     id: "rare-disease-support",
     title: "Rare Disease Support",
-    shortDescription: "Advocacy and assistance for individuals affected by rare diseases.",
+    shortDescription: "Arogya India is committed to supporting individuals and families affected by rare diseases by raising awareness about these conditions and providing assistance wherever possible.",
     description:
-      "India is home to millions of individuals affected by rare diseases, many of whom face diagnostic delays and lack of treatment options. Arogya India works to raise awareness about rare diseases, connect patients with specialists, advocate for policy changes, and provide a support network for affected families navigating this challenging journey.",
+      "Patients suffering from rare diseases often face unique challenges, including delayed diagnosis, limited treatment options, and high medical costs. Arogya India is committed to supporting individuals and families affected by rare diseases by raising awareness about these conditions and providing assistance wherever possible. Our efforts focus on spreading knowledge about rare diseases, helping connect patients with available resources, and supporting families navigating complex medical journeys. By highlighting rare disease challenges, we hope to bring greater attention to the needs of these patients and encourage broader community support.",
     icon: "ribbon",
     image: "/images/programs/rare-disease-support.webp",
   },
   {
     id: "community-health-education",
     title: "Community Health Education",
-    shortDescription: "Empowering communities with knowledge for healthier lives.",
+    shortDescription: "Arogya India organizes educational initiatives designed to improve public understanding of important health topics such as disease prevention, nutrition, sanitation, and general wellness.",
     description:
-      "Through our community health education programs, we conduct workshops, seminars, and awareness campaigns on topics including nutrition, maternal health, child health, mental wellness, and preventive care. We believe that an informed community is a healthy community, and our education initiatives are designed to create lasting behavioral change.",
+      "Community health education is a key part of building healthier societies. Arogya India organizes educational initiatives designed to improve public understanding of important health topics such as disease prevention, nutrition, sanitation, and general wellness. These programs aim to empower individuals with the knowledge they need to make informed health decisions for themselves and their families. Through awareness sessions, informational resources, and outreach programs, we work to promote healthier communities and improve long-term health outcomes.",
     icon: "graduation-cap",
     image: "/images/programs/health-education.webp",
   },

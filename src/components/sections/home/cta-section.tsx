@@ -25,8 +25,8 @@ export function CtaSection() {
             Join Our Mission
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-white/80">
-            Every contribution, big or small, helps us bring healthcare closer
-            to those who need it most. Together, we can build a healthier India.
+            Together, we can ensure that no patient is left without care
+            because of financial hardship or lack of awareness.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Button href="/contact" variant="accent" size="lg">

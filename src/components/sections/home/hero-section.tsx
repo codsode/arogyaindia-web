@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Heart } from "lucide-react";
+import { ArrowRight, Heart, Users } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { heroData } from "@/data/home-data";
@@ -76,7 +76,25 @@ export function HeroSection() {
               {heroData.secondaryCta.label}
               <ArrowRight className="h-5 w-5" />
             </Button>
+            <Button
+              href={heroData.tertiaryCta.href}
+              variant="outline"
+              size="lg"
+              className="border-white/30 text-white hover:bg-white/10"
+            >
+              <Users className="h-5 w-5" />
+              {heroData.tertiaryCta.label}
+            </Button>
           </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mx-auto mt-8 max-w-2xl text-base text-white/60 italic"
+          >
+            {heroData.supportingLine}
+          </motion.p>
         </div>
 
         {/* Scroll indicator */}
