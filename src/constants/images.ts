@@ -28,12 +28,12 @@ export const IMAGES = {
     communityHealth: "/images/focus-areas/community-health.webp",
   },
   programs: {
-    healthCamps: "/images/programs/health-camps.webp",
-    hygieneEducation: "/images/programs/hygiene-education.webp",
-    patientSupport: "/images/programs/patient-support.webp",
-    hygieneKits: "/images/programs/hygiene-kits.webp",
-    rareDiseaseSupport: "/images/programs/rare-disease-support.webp",
-    healthEducation: "/images/programs/health-education.webp",
+    healthCamps: "/images/programs/health-camps.png",
+    hygieneEducation: "/images/programs/hygiene-education.png",
+    patientSupport: "/images/programs/patient-support.png",
+    hygieneKits: "/images/programs/hygiene-kits.png",
+    rareDiseaseSupport: "/images/programs/rare-disease-support.png",
+    healthEducation: "/images/programs/health-education.png",
   },
   testimonials: {
     sunitaDevi: "/images/testimonials/testimonial-1.webp",
