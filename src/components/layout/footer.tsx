@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Heart,
   Mail,
@@ -13,6 +14,7 @@ import {
 import { Container } from "@/components/ui/container";
 import { siteConfig } from "@/data/site-config";
 import { footerLinks } from "@/data/footer-data";
+import { IMAGES } from "@/constants/images";
 
 const socialLinks = [
   { icon: Facebook, href: siteConfig.social.facebook, label: "Facebook" },
@@ -30,14 +32,19 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-600">
-                <Heart className="h-5 w-5 text-white" fill="white" />
+              <div className="relative h-10 w-10 overflow-hidden">
+                <Image
+                  src={IMAGES.brand.logo}
+                  alt="Arogya India Logo"
+                  fill
+                  className="object-contain brightness-0 invert"
+                />
               </div>
               <span className="text-xl font-bold">Arogya India</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-white/70">
-              {siteConfig.shortDescription}. Bringing dignity, care, and awareness
-              to underserved communities across India.
+              {siteConfig.shortDescription}. Bringing dignity, care, and
+              awareness to underserved communities across India.
             </p>
             <div className="mt-6 flex gap-3">
               {socialLinks.map(({ icon: Icon, href, label }) => (
@@ -54,7 +61,6 @@ export function Footer() {
               ))}
             </div>
           </div>
-
           {/* Quick Links */}
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/50">
@@ -73,7 +79,6 @@ export function Footer() {
               ))}
             </ul>
           </div>
-
           {/* Resources */}
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/50">
@@ -92,7 +97,6 @@ export function Footer() {
               ))}
             </ul>
           </div>
-
           {/* Contact Info */}
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/50">
@@ -134,7 +138,12 @@ export function Footer() {
             reserved.
           </p>
           <p className="text-xs text-white/50">
-            Made with <Heart className="inline h-3 w-3 text-red-400" fill="currentColor" /> for a healthier India
+            Made with{" "}
+            <Heart
+              className="inline h-3 w-3 text-red-400"
+              fill="currentColor"
+            />{" "}
+            for a healthier India
           </p>
         </Container>
       </div>

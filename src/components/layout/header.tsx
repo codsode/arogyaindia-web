@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navigationItems } from "@/data/navigation";
+import { IMAGES } from "@/constants/images";
 import { NavLink } from "./nav-link";
 import { MobileNav } from "./mobile-nav";
 import { Button } from "@/components/ui/button";
@@ -27,39 +29,55 @@ export function Header() {
           "fixed left-0 right-0 top-0 z-30 transition-all duration-300",
           isScrolled
             ? "bg-surface/95 shadow-md backdrop-blur-md"
-            : "bg-transparent"
+            : "bg-transparent",
         )}
       >
         <Container>
           <div className="flex h-20 items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-600">
-                <Heart className="h-5 w-5 text-white" fill="white" />
+              <div className="relative h-10 w-10 overflow-hidden">
+                <Image
+                  src={IMAGES.brand.logo}
+                  alt="Arogya India Logo"
+                  fill
+                  className={cn(
+                    "object-contain transition-all duration-300",
+                    !isScrolled && "brightness-0 invert"
+                  )}
+                />
               </div>
               <div>
-                <span className={cn(
-                  "text-xl font-bold transition-colors",
-                  isScrolled ? "text-primary-700" : "text-white"
-                )}>
+                <span
+                  className={cn(
+                    "text-xl font-bold transition-colors",
+                    isScrolled ? "text-primary-700" : "text-white",
+                  )}
+                >
                   Arogya
                 </span>
-                <span className={cn(
-                  "text-xl font-bold transition-colors",
-                  isScrolled ? "text-text-primary" : "text-white"
-                )}>
-                  {" "}India
+                <span
+                  className={cn(
+                    "text-xl font-bold transition-colors",
+                    isScrolled ? "text-text-primary" : "text-white",
+                  )}
+                >
+                  {" "}
+                  India
                 </span>
               </div>
             </Link>
-
             {/* Desktop Navigation */}
             <nav className="hidden items-center gap-8 lg:flex">
               {navigationItems.map((item) => (
-                <NavLink key={item.href} href={item.href} label={item.label} isScrolled={isScrolled} />
+                <NavLink
+                  key={item.href}
+                  href={item.href}
+                  label={item.label}
+                  isScrolled={isScrolled}
+                />
               ))}
             </nav>
-
             {/* CTA + Mobile Menu */}
             <div className="flex items-center gap-3">
               <Button
@@ -77,7 +95,7 @@ export function Header() {
                   "rounded-lg p-2 lg:hidden transition-colors",
                   isScrolled
                     ? "text-text-primary hover:bg-surface-muted"
-                    : "text-white hover:bg-white/10"
+                    : "text-white hover:bg-white/10",
                 )}
                 aria-label="Open menu"
               >

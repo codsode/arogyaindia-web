@@ -1,4 +1,7 @@
 export const IMAGES = {
+  brand: {
+    logo: "/logo.png",
+  },
   hero: {
     about: "/images/hero/hero-about.webp",
   },
@@ -24,8 +27,8 @@ export const IMAGES = {
   focusAreas: {
     rareDiseases: "/images/focus-areas/rare-diseases.webp",
     accessibleHealthcare: "/images/focus-areas/accessible-healthcare.webp",
-    hygieneAwareness: "/images/focus-areas/hygiene-awareness.webp",
-    communityHealth: "/images/focus-areas/community-health.webp",
+    hygieneAwareness: "/images/focus-areas/hygiene-awareness.png",
+    communityHealth: "/images/focus-areas/community-health.png",
   },
   programs: {
     healthCamps: "/images/programs/health-camps.png",
