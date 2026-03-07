@@ -1,27 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import {
-  Stethoscope,
-  BookOpen,
-  HeartHandshake,
-  Package,
-  Ribbon,
-  GraduationCap,
-} from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { programs } from "@/data/programs-data";
 import { staggerContainer, slideUp } from "@/animations/variants";
-
-const iconMap: Record<string, React.ReactNode> = {
-  stethoscope: <Stethoscope className="h-8 w-8" />,
-  "book-open": <BookOpen className="h-8 w-8" />,
-  "hand-heart": <HeartHandshake className="h-8 w-8" />,
-  package: <Package className="h-8 w-8" />,
-  ribbon: <Ribbon className="h-8 w-8" />,
-  "graduation-cap": <GraduationCap className="h-8 w-8" />,
-};
 
 export function ProgramsGridSection() {
   return (
@@ -47,10 +31,16 @@ export function ProgramsGridSection() {
                 index % 2 === 1 ? "lg:direction-rtl" : ""
               }`}
             >
-              {/* Icon & visual */}
+              {/* Program Image */}
               <div className="flex items-center justify-center">
-                <div className="flex h-28 w-28 items-center justify-center rounded-2xl bg-primary-50 text-primary-600">
-                  {iconMap[program.icon]}
+                <div className="relative aspect-square w-full max-w-[280px] overflow-hidden rounded-2xl">
+                  <Image
+                    src={program.image}
+                    alt={program.title}
+                    fill
+                    className="object-cover"
+                    sizes="280px"
+                  />
                 </div>
               </div>
 

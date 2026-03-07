@@ -1,3 +1,4 @@
+import { IMAGES } from "@/constants/images";
 import type { Campaign } from "@/types/campaign";
 
 export const campaigns: Campaign[] = [
@@ -11,7 +12,7 @@ export const campaigns: Campaign[] = [
     goalAmount: 500000,
     raisedAmount: 342000,
     icon: "droplets",
-    image: "/images/campaigns/clean-water.webp",
+    image: IMAGES.campaigns.cleanWater,
     status: "active",
     highlights: [
       "50 villages targeted for water purification systems",
@@ -29,7 +30,7 @@ export const campaigns: Campaign[] = [
     goalAmount: 300000,
     raisedAmount: 300000,
     icon: "sparkles",
-    image: "/images/campaigns/hygiene-drive.webp",
+    image: IMAGES.campaigns.hygieneDrive,
     status: "completed",
     highlights: [
       "200 schools covered across 5 states",
@@ -47,7 +48,7 @@ export const campaigns: Campaign[] = [
     goalAmount: 250000,
     raisedAmount: 89000,
     icon: "brain",
-    image: "/images/campaigns/mental-health.webp",
+    image: IMAGES.campaigns.mentalHealth,
     status: "active",
     highlights: [
       "Community mental health workshops in 30 districts",
@@ -67,7 +68,7 @@ export const campaigns: Campaign[] = [
     goalAmount: 400000,
     raisedAmount: 215000,
     icon: "ribbon",
-    image: "/images/campaigns/rare-disease-registry.webp",
+    image: IMAGES.campaigns.rareDiseaseRegistry,
     status: "active",
     highlights: [
       "Cataloging over 450 rare diseases",
@@ -85,7 +86,7 @@ export const campaigns: Campaign[] = [
     goalAmount: 750000,
     raisedAmount: 520000,
     icon: "heart-pulse",
-    image: "/images/campaigns/treatment-fund.webp",
+    image: IMAGES.campaigns.treatmentFund,
     status: "active",
     highlights: [
       "120 patients supported for treatment so far",
@@ -103,7 +104,7 @@ export const campaigns: Campaign[] = [
     goalAmount: 200000,
     raisedAmount: 200000,
     icon: "megaphone",
-    image: "/images/campaigns/awareness-week.webp",
+    image: IMAGES.campaigns.awarenessWeek,
     status: "completed",
     highlights: [
       "Events in 12 major cities",
@@ -123,7 +124,7 @@ export const campaigns: Campaign[] = [
     goalAmount: 600000,
     raisedAmount: 378000,
     icon: "baby",
-    image: "/images/campaigns/child-nutrition.webp",
+    image: IMAGES.campaigns.childNutrition,
     status: "active",
     highlights: [
       "5,000 children receiving nutritional supplements",
@@ -141,7 +142,7 @@ export const campaigns: Campaign[] = [
     goalAmount: 350000,
     raisedAmount: 350000,
     icon: "syringe",
-    image: "/images/campaigns/vaccination-drive.webp",
+    image: IMAGES.campaigns.vaccinationDrive,
     status: "completed",
     highlights: [
       "15,000 children vaccinated in remote areas",
@@ -159,7 +160,7 @@ export const campaigns: Campaign[] = [
     goalAmount: 280000,
     raisedAmount: 156000,
     icon: "stethoscope",
-    image: "/images/campaigns/pediatric-camps.webp",
+    image: IMAGES.campaigns.pediatricCamps,
     status: "active",
     highlights: [
       "Monthly camps in 10 underserved locations",

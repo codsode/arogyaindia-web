@@ -1,3 +1,5 @@
+import { IMAGES } from "@/constants/images";
+
 export const heroData = {
   headline: "Healthcare Support for Those Who Need It Most",
   subheadline:
@@ -13,5 +15,5 @@ export const missionPreview = {
   title: "Our Mission",
   description:
     "Our mission is to support individuals and families facing serious health challenges, particularly those affected by rare diseases, by providing health aid, promoting health awareness, and advancing health education. Through our initiatives, we aim to reduce barriers to healthcare access, assist patients in need, and empower communities with reliable knowledge that helps improve health outcomes and overall well-being.",
-  image: "/images/hero/hero-about.webp",
+  image: IMAGES.hero.about,
 };

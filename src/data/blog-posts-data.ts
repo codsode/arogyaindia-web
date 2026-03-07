@@ -1,3 +1,4 @@
+import { IMAGES } from "@/constants/images";
 import type { BlogPost } from "@/types/blog";
 
 export const blogPosts: BlogPost[] = [
@@ -27,7 +28,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>How You Can Help</h2>
 <p>You can support our menstrual health initiatives by donating hygiene kits, volunteering at our awareness camps, or simply starting a conversation about menstrual health in your community. Together, we can break the silence and build dignity for every woman and girl in India.</p>`,
-    featuredImage: "/images/blog/menstrual-health.webp",
+    featuredImage: IMAGES.blog.menstrualHealth,
     author: { name: "Arogya India", avatar: "/logo.svg" },
     publishedAt: "2025-01-15",
     readingTime: "6 min read",
@@ -65,7 +66,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>Join the Movement</h2>
 <p>You can make a difference in the lives of rare disease patients. Support our initiatives, share stories of rare disease warriors, and help us advocate for better healthcare policies. Together, we can ensure that rare does not mean forgotten.</p>`,
-    featuredImage: "/images/blog/rare-diseases.webp",
+    featuredImage: IMAGES.blog.rareDiseases,
     author: { name: "Arogya India", avatar: "/logo.svg" },
     publishedAt: "2025-02-10",
     readingTime: "7 min read",
@@ -102,7 +103,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>Your Role in This Movement</h2>
 <p>Every donation to Arogya India is a step toward making healthcare a reality for all. Every volunteer hour, every shared post, every conversation about health equity moves us closer to a world where health is truly a right, not a privilege. Join us in this mission.</p>`,
-    featuredImage: "/images/blog/health-is-a-right.webp",
+    featuredImage: IMAGES.blog.healthIsARight,
     author: { name: "Arogya India", avatar: "/logo.svg" },
     publishedAt: "2025-03-05",
     readingTime: "5 min read",

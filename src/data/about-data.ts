@@ -1,3 +1,4 @@
+import { IMAGES } from "@/constants/images";
 import type { TeamMember } from "@/types/team";
 
 export const aboutIntro = {
@@ -70,28 +71,63 @@ export const teamMembers: TeamMember[] = [
     name: "CS Kiran Dave",
     role: "Founder & Director",
     bio: "She leads the organization\u2019s initiatives focused on health aid, healthcare awareness, and community health education.",
-    image: "/images/team/placeholder-avatar.webp",
+    image: IMAGES.team.placeholder,
   },
   {
     name: "Hridyansh Dave",
     role: "Head of Operations & Director",
     bio: "He serves as Director and supports the planning and implementation of the foundation\u2019s programs related to health awareness and community outreach.",
-    image: "/images/team/placeholder-avatar.webp",
+    image: IMAGES.team.placeholder,
   },
   {
     name: "Adv. Nitin Dave",
     role: "Member",
     bio: "He is a member of the foundation and contributes to strengthening the organization\u2019s initiatives with a focus on transparency and responsible governance.",
-    image: "/images/team/placeholder-avatar.webp",
+    image: IMAGES.team.placeholder,
   },
 ];
 
 export const milestones = [
-  { year: "2018", title: "Founded", description: "Arogya India was established with a mission to bridge the healthcare gap in India." },
-  { year: "2019", title: "First Health Camp", description: "Organized our first health camp serving 500+ individuals in rural Uttar Pradesh." },
-  { year: "2020", title: "Pandemic Response", description: "Distributed 5,000+ hygiene kits and conducted awareness drives during COVID-19." },
-  { year: "2021", title: "Rare Disease Initiative", description: "Launched our rare disease support program connecting patients with specialists." },
-  { year: "2022", title: "Expanded Reach", description: "Extended operations to 5 states, impacting over 25,000 lives through various programs." },
-  { year: "2023", title: "50,000 Lives", description: "Reached the milestone of impacting 50,000+ lives across India through our programs." },
-  { year: "2024", title: "National Recognition", description: "Recognized as a leading grassroots health NGO for community-driven healthcare initiatives." },
+  {
+    year: "2018",
+    title: "Founded",
+    description:
+      "Arogya India was established with a mission to bridge the healthcare gap in India.",
+  },
+  {
+    year: "2019",
+    title: "First Health Camp",
+    description:
+      "Organized our first health camp serving 500+ individuals in rural Uttar Pradesh.",
+  },
+  {
+    year: "2020",
+    title: "Pandemic Response",
+    description:
+      "Distributed 5,000+ hygiene kits and conducted awareness drives during COVID-19.",
+  },
+  {
+    year: "2021",
+    title: "Rare Disease Initiative",
+    description:
+      "Launched our rare disease support program connecting patients with specialists.",
+  },
+  {
+    year: "2022",
+    title: "Expanded Reach",
+    description:
+      "Extended operations to 5 states, impacting over 25,000 lives through various programs.",
+  },
+  {
+    year: "2023",
+    title: "50,000 Lives",
+    description:
+      "Reached the milestone of impacting 50,000+ lives across India through our programs.",
+  },
+  {
+    year: "2024",
+    title: "National Recognition",
+    description:
+      "Recognized as a leading grassroots health NGO for community-driven healthcare initiatives.",
+  },
 ];

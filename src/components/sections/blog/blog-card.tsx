@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Calendar, Clock, ArrowRight, Newspaper } from "lucide-react";
+import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { formatDate } from "@/lib/utils";
 import type { BlogPost } from "@/types/blog";
@@ -11,11 +12,15 @@ interface BlogCardProps {
 export function BlogCard({ post }: BlogCardProps) {
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
-      {/* Image placeholder */}
-      <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-primary-100 to-primary-200">
-        <div className="flex h-full items-center justify-center">
-          <Newspaper className="h-10 w-10 text-primary-400" />
-        </div>
+      {/* Featured Image */}
+      <div className="relative aspect-[16/10] overflow-hidden">
+        <Image
+          src={post.featuredImage}
+          alt={post.title}
+          fill
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
         <div className="absolute left-3 top-3 flex gap-2">
           {post.tags.slice(0, 2).map((tag) => (
             <Badge key={tag} variant="primary" className="bg-white/90 text-primary-700">

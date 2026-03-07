@@ -1,32 +1,10 @@
 "use client";
 
-import {
-  HeartPulse,
-  Sparkles,
-  Ribbon,
-  Brain,
-  Droplets,
-  Megaphone,
-  Baby,
-  Syringe,
-  Stethoscope,
-  CheckCircle,
-} from "lucide-react";
+import Image from "next/image";
+import { CheckCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import type { Campaign, CampaignCategory } from "@/types/campaign";
-
-const iconMap: Record<string, React.ReactNode> = {
-  "heart-pulse": <HeartPulse className="h-8 w-8" />,
-  sparkles: <Sparkles className="h-8 w-8" />,
-  ribbon: <Ribbon className="h-8 w-8" />,
-  brain: <Brain className="h-8 w-8" />,
-  droplets: <Droplets className="h-8 w-8" />,
-  megaphone: <Megaphone className="h-8 w-8" />,
-  baby: <Baby className="h-8 w-8" />,
-  syringe: <Syringe className="h-8 w-8" />,
-  stethoscope: <Stethoscope className="h-8 w-8" />,
-};
 
 const categoryBadgeVariant: Record<
   CampaignCategory,
@@ -57,13 +35,15 @@ export function CampaignCard({ campaign }: CampaignCardProps) {
 
   return (
     <Card className="group flex h-full flex-col">
-      {/* Image placeholder */}
-      <div className="relative -mx-6 -mt-6 mb-5 aspect-[16/10] overflow-hidden rounded-t-xl bg-gradient-to-br from-primary-100 to-primary-200">
-        <div className="flex h-full items-center justify-center">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary-600/90 text-white">
-            {iconMap[campaign.icon]}
-          </div>
-        </div>
+      {/* Campaign Image */}
+      <div className="relative -mx-6 -mt-6 mb-5 aspect-[16/10] overflow-hidden rounded-t-xl">
+        <Image
+          src={campaign.image}
+          alt={campaign.title}
+          fill
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
         {/* Category badge */}
         <div className="absolute left-3 top-3 flex gap-2">
           <Badge variant={categoryBadgeVariant[campaign.category]}>

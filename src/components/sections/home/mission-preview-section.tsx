@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { Container } from "@/components/ui/container";
@@ -26,17 +27,14 @@ export function MissionPreviewSection() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-gradient-to-br from-primary-200 to-primary-300">
-              <div className="flex h-full items-center justify-center text-primary-600">
-                <div className="text-center">
-                  <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-primary-100">
-                    <svg className="h-10 w-10 text-primary-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                    </svg>
-                  </div>
-                  <p className="text-sm font-medium">Healthcare for All</p>
-                </div>
-              </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <Image
+                src={missionPreview.image}
+                alt="About Arogya India"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
             {/* Floating stats card */}
             <div className="absolute -bottom-6 -right-6 rounded-xl bg-surface p-4 shadow-lg">

@@ -1,4 +1,5 @@
-import { Calendar, Clock, User, Newspaper } from "lucide-react";
+import Image from "next/image";
+import { Calendar, Clock, User } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Container } from "@/components/ui/container";
 import { formatDate } from "@/lib/utils";
@@ -41,11 +42,16 @@ export function BlogPostHeader({ post }: BlogPostHeaderProps) {
             </span>
           </div>
 
-          {/* Featured Image placeholder */}
-          <div className="mt-8 aspect-[2/1] overflow-hidden rounded-2xl bg-gradient-to-br from-primary-100 to-primary-200">
-            <div className="flex h-full items-center justify-center">
-              <Newspaper className="h-16 w-16 text-primary-400" />
-            </div>
+          {/* Featured Image */}
+          <div className="relative mt-8 aspect-[2/1] overflow-hidden rounded-2xl">
+            <Image
+              src={post.featuredImage}
+              alt={post.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 768px"
+              priority
+            />
           </div>
         </div>
       </Container>

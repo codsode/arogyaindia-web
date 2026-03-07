@@ -1,23 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import {
-  HeartPulse,
-  Sparkles,
-  Ribbon,
-  Users,
-  CheckCircle,
-} from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { focusAreas } from "@/data/focus-areas-data";
 import { staggerContainer, slideUp } from "@/animations/variants";
-
-const iconMap: Record<string, React.ReactNode> = {
-  "heart-pulse": <HeartPulse className="h-8 w-8" />,
-  sparkles: <Sparkles className="h-8 w-8" />,
-  ribbon: <Ribbon className="h-8 w-8" />,
-  users: <Users className="h-8 w-8" />,
-};
 
 export function FocusAreasGridSection() {
   return (
@@ -38,12 +26,16 @@ export function FocusAreasGridSection() {
                 index % 2 === 1 ? "lg:[direction:rtl]" : ""
               }`}
             >
-              {/* Visual */}
+              {/* Image */}
               <div className={index % 2 === 1 ? "lg:[direction:ltr]" : ""}>
-                <div className="flex aspect-video items-center justify-center rounded-2xl bg-gradient-to-br from-primary-100 to-primary-200">
-                  <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-primary-600 text-white">
-                    {iconMap[area.icon]}
-                  </div>
+                <div className="relative aspect-video overflow-hidden rounded-2xl">
+                  <Image
+                    src={area.image}
+                    alt={area.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
                 </div>
               </div>
 
