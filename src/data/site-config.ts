@@ -7,11 +7,8 @@ export const siteConfig = {
   ogImage: "/og-image.jpg",
   locale: "en_IN",
   social: {
-    instagram: "https://www.instagram.com/arogyaindia_org",
-    twitter: "https://twitter.com/arogyaindia",
-    facebook: "https://www.facebook.com/arogyaindia",
-    linkedin: "https://www.linkedin.com/company/arogyaindia",
-    youtube: "https://www.youtube.com/@arogyaindia",
+    facebook: "https://www.facebook.com/profile.php?id=61576960042048",
+    instagram: "https://www.instagram.com/arogyaindia.ngo/",
   },
   contact: {
     email: "care@arogyaindia.org",

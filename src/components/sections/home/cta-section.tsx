@@ -29,7 +29,7 @@ export function CtaSection() {
             because of financial hardship or lack of awareness.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Button href="/contact" variant="accent" size="lg">
+            <Button href="/donate" variant="accent" size="lg">
               <Heart className="h-5 w-5" />
               Donate Now
             </Button>

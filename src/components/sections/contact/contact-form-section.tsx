@@ -3,16 +3,21 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Send, CheckCircle } from "lucide-react";
+import { Send, CheckCircle, AlertCircle } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { contactFormSchema, type ContactFormValues } from "@/lib/validations";
 
+const FORMSPREE_ENDPOINT =
+  process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ||
+  "https://formspree.io/f/your-form-id";
+
 export function ContactFormSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const {
     register,
@@ -25,19 +30,39 @@ export function ContactFormSection() {
 
   const onSubmit = async (data: ContactFormValues) => {
     setIsSubmitting(true);
+    setSubmitError(null);
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          subject: data.subject,
+          message: data.message,
+          _subject: `Arogya India contact: ${data.subject}`,
+          _replyto: data.email,
+        }),
       });
 
       if (response.ok) {
         setIsSubmitted(true);
         reset();
+      } else {
+        const result = await response.json().catch(() => null);
+        const message =
+          result?.errors?.[0]?.message ||
+          "Something went wrong. Please try again or email us directly.";
+        setSubmitError(message);
       }
     } catch {
-      // Handle error silently
+      setSubmitError(
+        "Unable to send your message right now. Please check your connection or email us directly."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -125,6 +150,13 @@ export function ContactFormSection() {
               error={errors.message?.message}
               {...register("message")}
             />
+
+            {submitError && (
+              <div className="flex items-start gap-2 rounded-lg bg-red-50 p-3 text-sm text-red-700">
+                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                <span>{submitError}</span>
+              </div>
+            )}
 
             <Button
               type="submit"

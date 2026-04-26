@@ -81,7 +81,7 @@ export function Header() {
             {/* CTA + Mobile Menu */}
             <div className="flex items-center gap-3">
               <Button
-                href="/contact"
+                href="/donate"
                 variant="accent"
                 size="sm"
                 className="hidden sm:inline-flex"

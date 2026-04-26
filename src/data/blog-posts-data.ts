@@ -24,7 +24,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h2>Building Dignity Through Action</h2>
-<p>Every girl deserves to manage her period with dignity. Through our programs, we have reached over 10,000 women and girls across multiple states, providing them with not just products but knowledge and confidence. When a girl can attend school without fear or shame during her period, we are building a more equitable society.</p>
+<p>Every girl deserves to manage her period with dignity. Through our awareness sessions and community engagement, we are working to ensure that no girl misses school or feels shame because of her period. When a girl can attend school without fear or stigma during her period, we are building a more equitable society.</p>
 
 <h2>How You Can Help</h2>
 <p>You can support our menstrual health initiatives by donating hygiene kits, volunteering at our awareness camps, or simply starting a conversation about menstrual health in your community. Together, we can break the silence and build dignity for every woman and girl in India.</p>`,

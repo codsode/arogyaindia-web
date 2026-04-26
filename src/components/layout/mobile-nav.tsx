@@ -51,7 +51,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
         </nav>
 
         <div className="p-4">
-          <Button href="/contact" variant="accent" size="lg" className="w-full">
+          <Button href="/donate" variant="accent" size="lg" className="w-full">
             Donate Now
           </Button>
         </div>

@@ -7,9 +7,6 @@ import {
   MapPin,
   Facebook,
   Instagram,
-  Twitter,
-  Linkedin,
-  Youtube,
 } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { siteConfig } from "@/data/site-config";
@@ -19,9 +16,6 @@ import { IMAGES } from "@/constants/images";
 const socialLinks = [
   { icon: Facebook, href: siteConfig.social.facebook, label: "Facebook" },
   { icon: Instagram, href: siteConfig.social.instagram, label: "Instagram" },
-  { icon: Twitter, href: siteConfig.social.twitter, label: "Twitter" },
-  { icon: Linkedin, href: siteConfig.social.linkedin, label: "LinkedIn" },
-  { icon: Youtube, href: siteConfig.social.youtube, label: "YouTube" },
 ];
 
 export function Footer() {
@@ -132,11 +126,23 @@ export function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <Container className="flex flex-col items-center justify-between gap-4 py-6 sm:flex-row">
+        <Container className="flex flex-col items-center justify-between gap-4 py-6 md:flex-row">
           <p className="text-xs text-white/50">
             &copy; {new Date().getFullYear()} {siteConfig.name}. All rights
             reserved.
           </p>
+          <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            {footerLinks.legal.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="text-xs text-white/60 transition-colors hover:text-primary-400"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
           <p className="text-xs text-white/50">
             Made with{" "}
             <Heart

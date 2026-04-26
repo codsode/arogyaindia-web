@@ -30,7 +30,7 @@ export function DonateBanner() {
             medical support to underserved communities across India.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button href="/contact" variant="primary" size="lg" className="bg-white text-accent-600 hover:bg-white/90">
+            <Button href="/donate" variant="primary" size="lg" className="bg-white text-accent-600 hover:bg-white/90">
               Donate Now
             </Button>
             <Button href="/what-we-do" variant="outline" size="lg" className="border-white text-white hover:bg-white/10">

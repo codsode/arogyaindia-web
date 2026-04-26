@@ -6,7 +6,7 @@ export const heroData = {
     "Arogya India is a health-focused initiative by Arogya Development Foundation dedicated to supporting patients suffering from rare diseases and other serious health conditions through financial assistance, health education, and awareness programs.",
   supportingLine:
     "Together, we can ensure that no patient is left without care because of financial hardship or lack of awareness.",
-  primaryCta: { label: "Donate Now", href: "/contact" },
+  primaryCta: { label: "Donate Now", href: "/donate" },
   secondaryCta: { label: "Get Help", href: "/contact" },
   tertiaryCta: { label: "Volunteer With Us", href: "/contact" },
 };

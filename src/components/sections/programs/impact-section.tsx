@@ -18,11 +18,12 @@ export function ImpactSection() {
       <Container>
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold text-white sm:text-4xl">
-            Our Impact in Numbers
+            Our Work So Far
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-white/80">
-            Every number represents a life touched, a community empowered, and a
-            step closer to healthcare for all.
+            We are just getting started. Each step brings us closer to a future
+            where healthcare support, awareness, and education are accessible
+            to all.
           </p>
         </div>
 

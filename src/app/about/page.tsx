@@ -7,7 +7,6 @@ import { MissionVisionSection } from "@/components/sections/about/mission-vision
 import { ValuesSection } from "@/components/sections/about/values-section";
 import { FounderMessageSection } from "@/components/sections/about/founder-message-section";
 import { TeamSection } from "@/components/sections/about/team-section";
-import { TimelineSection } from "@/components/sections/about/timeline-section";
 import { DonateBanner } from "@/components/sections/shared/donate-banner";
 
 export const metadata: Metadata = generatePageMetadata({
@@ -33,7 +32,6 @@ export default function AboutPage() {
       <ValuesSection />
       <FounderMessageSection />
       <TeamSection />
-      <TimelineSection />
       <DonateBanner />
     </>
   );

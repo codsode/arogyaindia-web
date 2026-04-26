@@ -1,8 +1,8 @@
 import type { Stat } from "@/types/stats";
 
 export const stats: Stat[] = [
-  { label: "Lives Impacted", value: 50000, suffix: "+", icon: "heart" },
-  { label: "Health Camps", value: 200, suffix: "+", icon: "stethoscope" },
-  { label: "Hygiene Kits Distributed", value: 15000, suffix: "+", icon: "package" },
-  { label: "Communities Served", value: 100, suffix: "+", icon: "users" },
+  { label: "Focus Areas", value: 4, suffix: "", icon: "heart" },
+  { label: "Programs Launched", value: 6, suffix: "", icon: "stethoscope" },
+  { label: "Active Volunteers", value: 12, suffix: "+", icon: "users" },
+  { label: "Communities Engaged", value: 5, suffix: "+", icon: "package" },
 ];
