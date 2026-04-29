@@ -120,11 +120,18 @@ export function BankDetailsSection() {
                 <ShieldCheck className="h-6 w-6" />
               </div>
               <h4 className="text-base font-semibold text-text-primary">
-                80G Tax Exemption
+                12A &amp; 80G Registered
               </h4>
               <p className="mt-2 text-sm text-text-secondary">
                 Donations are eligible for tax deduction under Section 80G of
-                the Income Tax Act.
+                the Income Tax Act.{" "}
+                <a
+                  href="/documents"
+                  className="font-medium text-primary-600 hover:underline"
+                >
+                  View documents
+                </a>
+                .
               </p>
             </div>
 

@@ -36,9 +36,10 @@ export function DocumentsSection() {
                 </h2>
                 <p className="mt-2 text-sm leading-relaxed text-text-secondary">
                   Arogya Development Foundation is a registered nonprofit
-                  organization under the Companies Act, 2013. Our official
-                  documents and certificates are available below. Additional
-                  certifications will be added as they are issued.
+                  organization under the Companies Act, 2013, with provisional
+                  registration under Section 12A and provisional approval under
+                  Section 80G of the Income Tax Act, 1961. Our official
+                  documents are available for download below.
                 </p>
               </div>
             </div>
@@ -86,15 +87,25 @@ export function DocumentsSection() {
                   )}
 
                   {doc.status === "available" && doc.fileUrl && (
-                    <a
-                      href={doc.fileUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-flex items-center justify-center gap-2 rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-700"
-                    >
-                      <Download className="h-4 w-4" />
-                      View Document
-                    </a>
+                    <div className="mt-auto flex flex-col gap-2 pt-4 sm:flex-row">
+                      <a
+                        href={doc.fileUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-700"
+                      >
+                        <FileText className="h-4 w-4" />
+                        View
+                      </a>
+                      <a
+                        href={doc.fileUrl}
+                        download
+                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg border border-primary-200 bg-primary-50 px-4 py-2 text-sm font-medium text-primary-700 transition-colors hover:bg-primary-100"
+                      >
+                        <Download className="h-4 w-4" />
+                        Download
+                      </a>
+                    </div>
                   )}
                 </div>
               );
