@@ -233,14 +233,14 @@ export function ContactFormSection() {
               <div className="grid gap-5 sm:grid-cols-2">
                 <Input
                   label="Full Name"
-                  placeholder="John Doe"
+                  placeholder="Enter your name"
                   error={errors.name?.message}
                   {...register("name")}
                 />
                 <Input
                   label="Email Address"
                   type="email"
-                  placeholder="john@example.com"
+                  placeholder="Enter your email address"
                   error={errors.email?.message}
                   {...register("email")}
                 />
@@ -250,7 +250,7 @@ export function ContactFormSection() {
                 <Input
                   label="Phone Number"
                   type="tel"
-                  placeholder="+91 98765 43210"
+                  placeholder="Enter your phone number"
                   error={errors.phone?.message}
                   {...register("phone")}
                 />

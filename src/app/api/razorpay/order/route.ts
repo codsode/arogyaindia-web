@@ -4,6 +4,14 @@ import { getRazorpayClient } from "@/lib/razorpay";
 
 export const runtime = "nodejs";
 
+// Treat empty strings as missing — donor fields are all optional, since
+// anonymous donations send empty values for name/email/phone.
+const optionalString = (schema: z.ZodString) =>
+  z.preprocess(
+    (val) => (typeof val === "string" && val.trim() === "" ? undefined : val),
+    schema.optional(),
+  );
+
 const orderSchema = z.object({
   amount: z
     .number({ message: "Amount is required" })
@@ -12,11 +20,14 @@ const orderSchema = z.object({
     .max(500000, "Please contact us directly for donations above ₹5,00,000"),
   donor: z
     .object({
-      name: z.string().min(2).max(100).optional(),
-      email: z.string().email().optional(),
-      phone: z.string().min(7).max(20).optional(),
+      name: optionalString(z.string().min(2).max(100)),
+      email: optionalString(z.string().email()),
+      phone: optionalString(z.string().min(7).max(20)),
     })
     .optional(),
+  anonymous: z.boolean().optional(),
+  campaignId: z.string().max(100).optional(),
+  campaignTitle: z.string().max(200).optional(),
 });
 
 export async function POST(request: Request) {
@@ -35,7 +46,18 @@ export async function POST(request: Request) {
     );
   }
 
-  const { amount, donor } = parsed.data;
+  const { amount, donor, anonymous, campaignId, campaignTitle } = parsed.data;
+
+  // Non-anonymous donations need at least an email so we can issue the receipt.
+  if (!anonymous && !donor?.email) {
+    return NextResponse.json(
+      {
+        message:
+          "Email is required for non-anonymous donations so we can send your 80G receipt.",
+      },
+      { status: 400 },
+    );
+  }
 
   try {
     const client = getRazorpayClient();
@@ -44,9 +66,12 @@ export async function POST(request: Request) {
       currency: "INR",
       receipt: `aidn_${Date.now()}`,
       notes: {
-        donor_name: donor?.name ?? "",
+        donor_name: anonymous ? "Anonymous" : (donor?.name ?? ""),
         donor_email: donor?.email ?? "",
         donor_phone: donor?.phone ?? "",
+        anonymous: anonymous ? "yes" : "no",
+        campaign_id: campaignId ?? "general",
+        campaign_title: campaignTitle ?? "General Donation",
       },
     });
 

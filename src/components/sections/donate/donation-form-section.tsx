@@ -25,7 +25,7 @@ import type {
   RazorpayCheckoutResponse,
 } from "@/lib/razorpay-types";
 
-const PRESET_AMOUNTS = [500, 1100, 1500, 2000, 5000, 10000, 20000];
+const DEFAULT_PRESET_AMOUNTS = [500, 1100, 1500, 2000, 5000, 10000, 20000];
 
 const donorSchema = z.object({
   name: z.string().min(2, "Please enter your name"),
@@ -52,6 +52,7 @@ interface FieldProps {
   value: string;
   onChange: (value: string) => void;
   error?: string;
+  disabled?: boolean;
 }
 
 function Field({
@@ -61,6 +62,7 @@ function Field({
   value,
   onChange,
   error,
+  disabled = false,
 }: FieldProps) {
   return (
     <div>
@@ -70,9 +72,11 @@ function Field({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        disabled={disabled}
         className={cn(
           "w-full rounded-lg bg-surface-muted px-4 py-3.5 text-base text-text-primary placeholder:text-text-muted transition-colors focus:bg-surface focus:outline-none focus:ring-2 focus:ring-primary-500/30",
-          error && "ring-2 ring-red-500/40"
+          error && "ring-2 ring-red-500/40",
+          disabled && "cursor-not-allowed bg-surface-muted/50 text-text-muted",
         )}
       />
       {error && <p className="mt-1.5 text-xs text-red-600">{error}</p>}
@@ -80,13 +84,32 @@ function Field({
   );
 }
 
-export function DonationFormSection() {
-  const [amountInput, setAmountInput] = useState<string>("1000");
+interface DonationFormSectionProps {
+  defaultAmount?: number;
+  presetAmounts?: number[];
+  campaignId?: string;
+  campaignTitle?: string;
+  hideSidePanel?: boolean;
+  heading?: string;
+  subheading?: string;
+}
+
+export function DonationFormSection({
+  defaultAmount = 1000,
+  presetAmounts = DEFAULT_PRESET_AMOUNTS,
+  campaignId,
+  campaignTitle,
+  hideSidePanel = false,
+  heading = "Donate",
+  subheading = "Pay instantly with UPI — secure and instant.",
+}: DonationFormSectionProps = {}) {
+  const [amountInput, setAmountInput] = useState<string>(String(defaultAmount));
   const [donor, setDonor] = useState<DonorValues>({
     name: "",
     email: "",
     phone: "",
   });
+  const [isAnonymous, setIsAnonymous] = useState(false);
   const [errors, setErrors] = useState<
     Partial<Record<keyof DonorValues | "amount", string>>
   >({});
@@ -114,13 +137,19 @@ export function DonationFormSection() {
 
   const validateInputs = () => {
     const nextErrors: typeof errors = {};
-    const donorParse = donorSchema.safeParse(donor);
-    if (!donorParse.success) {
-      for (const issue of donorParse.error.issues) {
-        const key = issue.path[0] as keyof DonorValues;
-        if (!nextErrors[key]) nextErrors[key] = issue.message;
+
+    // Anonymous donations require no donor info — no receipt will be issued
+    // (80G receipts require donor identity), so we skip all donor validation.
+    if (!isAnonymous) {
+      const donorParse = donorSchema.safeParse(donor);
+      if (!donorParse.success) {
+        for (const issue of donorParse.error.issues) {
+          const key = issue.path[0] as keyof DonorValues;
+          if (!nextErrors[key]) nextErrors[key] = issue.message;
+        }
       }
     }
+
     if (!amount || amount < 10) {
       nextErrors.amount = "Minimum donation is ₹10";
     } else if (amount > 500000) {
@@ -148,7 +177,13 @@ export function DonationFormSection() {
       const orderRes = await fetch("/api/razorpay/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount, donor }),
+        body: JSON.stringify({
+          amount,
+          donor,
+          anonymous: isAnonymous,
+          campaignId,
+          campaignTitle,
+        }),
       });
 
       const orderData = await orderRes.json();
@@ -161,10 +196,12 @@ export function DonationFormSection() {
         amount: orderData.amount,
         currency: orderData.currency,
         name: "Arogya India",
-        description: "Donation to Arogya Development Foundation",
+        description: campaignTitle
+          ? `Donation: ${campaignTitle}`
+          : "Donation to Arogya Development Foundation",
         order_id: orderData.orderId,
         prefill: {
-          name: donor.name,
+          name: isAnonymous ? "" : donor.name,
           email: donor.email,
           contact: donor.phone,
         },
@@ -254,12 +291,15 @@ export function DonationFormSection() {
               </span>
             </p>
             <p className="mt-4 text-xs text-text-muted">
-              An 80G receipt will be issued to your email shortly.
+              {isAnonymous
+                ? "Anonymous donation recorded. No receipt will be issued for this contribution."
+                : "An 80G receipt will be issued to your email shortly."}
             </p>
             <Button
               onClick={() => {
                 setStatus({ state: "idle" });
                 setDonor({ name: "", email: "", phone: "" });
+                setIsAnonymous(false);
                 setAmountInput("1000");
               }}
               variant="primary"
@@ -290,23 +330,30 @@ export function DonationFormSection() {
       </div>
 
       <Container className="relative">
-        <div className="grid gap-8 lg:grid-cols-5">
+        <div
+          className={cn(
+            "grid gap-8",
+            hideSidePanel
+              ? "mx-auto max-w-2xl"
+              : "lg:grid-cols-5",
+          )}
+        >
           {/* Donation form */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-3"
+            className={hideSidePanel ? "" : "lg:col-span-3"}
           >
             <div className="rounded-2xl bg-surface p-6 shadow-lg ring-1 ring-border sm:p-8">
               <div className="flex items-center justify-between gap-4 border-b border-border pb-4">
                 <div>
                   <h2 className="text-2xl font-bold text-primary-700">
-                    Donate
+                    {heading}
                   </h2>
                   <p className="mt-1 text-sm text-text-secondary">
-                    Pay instantly with UPI — secure and instant.
+                    {subheading}
                   </p>
                 </div>
                 <div className="hidden h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-primary-600 sm:flex">
@@ -316,32 +363,39 @@ export function DonationFormSection() {
 
               <div className="mt-6 space-y-4">
                 <Field
-                  placeholder="Name"
+                  placeholder={isAnonymous ? "Name (not required)" : "Name"}
                   value={donor.name}
                   onChange={(value) =>
                     setDonor((prev) => ({ ...prev, name: value }))
                   }
-                  error={errors.name}
+                  error={isAnonymous ? undefined : errors.name}
+                  disabled={isAnonymous}
                 />
                 <Field
-                  placeholder="Mobile Number"
+                  placeholder={
+                    isAnonymous ? "Mobile Number (not required)" : "Mobile Number"
+                  }
                   type="tel"
                   inputMode="tel"
                   value={donor.phone}
                   onChange={(value) =>
                     setDonor((prev) => ({ ...prev, phone: value }))
                   }
-                  error={errors.phone}
+                  error={isAnonymous ? undefined : errors.phone}
+                  disabled={isAnonymous}
                 />
                 <Field
-                  placeholder="Email Id"
+                  placeholder={
+                    isAnonymous ? "Email Id (not required)" : "Email Id"
+                  }
                   type="email"
                   inputMode="email"
                   value={donor.email}
                   onChange={(value) =>
                     setDonor((prev) => ({ ...prev, email: value }))
                   }
-                  error={errors.email}
+                  error={isAnonymous ? undefined : errors.email}
+                  disabled={isAnonymous}
                 />
                 <Field
                   placeholder="Amount"
@@ -354,7 +408,7 @@ export function DonationFormSection() {
               </div>
 
               <div className="mt-4 flex flex-wrap gap-2">
-                {PRESET_AMOUNTS.map((value) => {
+                {presetAmounts.map((value) => {
                   const active = amount === value;
                   return (
                     <button
@@ -373,6 +427,71 @@ export function DonationFormSection() {
                   );
                 })}
               </div>
+
+              <label
+                className={cn(
+                  "group mt-5 flex cursor-pointer items-center gap-3 rounded-lg border px-4 py-3 transition-colors select-none",
+                  isAnonymous
+                    ? "border-primary-600 bg-primary-50"
+                    : "border-border bg-surface-muted/40 hover:border-primary-300 hover:bg-primary-50/40",
+                )}
+              >
+                <input
+                  type="checkbox"
+                  checked={isAnonymous}
+                  onChange={(e) => {
+                    setIsAnonymous(e.target.checked);
+                    if (e.target.checked) {
+                      setErrors((prev) => ({
+                        ...prev,
+                        name: undefined,
+                        email: undefined,
+                        phone: undefined,
+                      }));
+                    }
+                  }}
+                  className="peer sr-only"
+                />
+                <span
+                  className={cn(
+                    "flex h-5 w-5 shrink-0 items-center justify-center rounded border-2 transition-colors",
+                    isAnonymous
+                      ? "border-primary-600 bg-primary-600 text-white"
+                      : "border-text-muted bg-surface group-hover:border-primary-500",
+                  )}
+                  aria-hidden="true"
+                >
+                  {isAnonymous && (
+                    <svg
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      className="h-3.5 w-3.5"
+                    >
+                      <path
+                        d="M3 8.5l3.5 3.5L13 5"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  )}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p
+                    className={cn(
+                      "text-sm font-medium transition-colors",
+                      isAnonymous ? "text-primary-700" : "text-text-primary",
+                    )}
+                  >
+                    Make my donation anonymous
+                  </p>
+                  <p className="text-xs text-text-muted">
+                    No personal details required. Note: 80G receipt cannot be
+                    issued for anonymous donations.
+                  </p>
+                </div>
+              </label>
 
               {status.state === "error" && (
                 <motion.div
@@ -415,6 +534,7 @@ export function DonationFormSection() {
           </motion.div>
 
           {/* Right column: trust + bank details */}
+          {!hideSidePanel && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -468,6 +588,7 @@ export function DonationFormSection() {
               </div>
             </div>
           </motion.div>
+          )}
         </div>
       </Container>
     </section>

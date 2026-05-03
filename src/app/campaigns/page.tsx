@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { generatePageMetadata } from "@/lib/metadata";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { PageHero } from "@/components/sections/shared/page-hero";
-import { CampaignsWipSection } from "@/components/sections/campaigns/campaigns-wip-section";
+import { CampaignsListSection } from "@/components/sections/campaigns/campaigns-list-section";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Campaigns",
   description:
-    "Arogya India's campaigns page is currently being prepared. Our health awareness, rare disease aid, and child health campaigns will be launched soon.",
+    "Support Arogya India's active campaigns — from our first health and hygiene initiative to sanitary aid for women and girls, hygiene kit sponsorship, and general donations.",
   path: "/campaigns",
 });
 
@@ -19,10 +19,10 @@ export default function CampaignsPage() {
       <BreadcrumbSchema items={breadcrumbs} />
       <PageHero
         title="Our Campaigns"
-        subtitle="Focused initiatives for health awareness, rare disease support, and child health across India."
+        subtitle="Focused initiatives for health, hygiene, and dignity. Choose a campaign and support the cause that matters most to you."
         breadcrumbs={breadcrumbs}
       />
-      <CampaignsWipSection />
+      <CampaignsListSection />
     </>
   );
 }
