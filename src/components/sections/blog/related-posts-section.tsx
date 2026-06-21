@@ -1,16 +1,16 @@
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { BlogCard } from "./blog-card";
-import { blogPosts } from "@/data/blog-posts-data";
+import { getRelatedPosts } from "@/lib/api/blog";
 
 interface RelatedPostsSectionProps {
   currentSlug: string;
 }
 
-export function RelatedPostsSection({ currentSlug }: RelatedPostsSectionProps) {
-  const relatedPosts = blogPosts
-    .filter((post) => post.slug !== currentSlug)
-    .slice(0, 2);
+export async function RelatedPostsSection({
+  currentSlug,
+}: RelatedPostsSectionProps) {
+  const relatedPosts = await getRelatedPosts(currentSlug, 2);
 
   if (relatedPosts.length === 0) return null;
 

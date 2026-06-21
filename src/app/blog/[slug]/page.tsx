@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { siteConfig } from "@/data/site-config";
-import { blogPosts } from "@/data/blog-posts-data";
+import { getBlogPost, getBlogSlugs } from "@/lib/api/blog";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { ArticleSchema } from "@/components/seo/article-schema";
 import { BlogPostHeader } from "@/components/sections/blog/blog-post-header";
@@ -14,15 +14,16 @@ interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
 }
 
-export function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
+export async function generateStaticParams() {
+  const slugs = await getBlogSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = blogPosts.find((p) => p.slug === slug);
+  const post = await getBlogPost(slug);
   if (!post) return {};
 
   return {
@@ -50,7 +51,7 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = blogPosts.find((p) => p.slug === slug);
+  const post = await getBlogPost(slug);
 
   if (!post) notFound();
 

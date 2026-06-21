@@ -6,10 +6,14 @@ import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
 import { BlogCard } from "@/components/sections/blog/blog-card";
-import { blogPosts } from "@/data/blog-posts-data";
+import type { BlogPost } from "@/types/blog";
 import { staggerContainer, slideUp } from "@/animations/variants";
 
-export function BlogPreviewSection() {
+interface BlogPreviewSectionProps {
+  posts: BlogPost[];
+}
+
+export function BlogPreviewSection({ posts }: BlogPreviewSectionProps) {
   return (
     <section className="bg-surface-muted py-20">
       <Container>
@@ -25,7 +29,7 @@ export function BlogPreviewSection() {
           viewport={{ once: true, margin: "-50px" }}
           className="grid gap-8 md:grid-cols-3"
         >
-          {blogPosts.slice(0, 3).map((post) => (
+          {posts.slice(0, 3).map((post) => (
             <motion.div key={post.slug} variants={slideUp}>
               <BlogCard post={post} />
             </motion.div>

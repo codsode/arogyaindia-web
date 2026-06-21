@@ -4,6 +4,7 @@ import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 import { PageHero } from "@/components/sections/shared/page-hero";
 import { BlogGridSection } from "@/components/sections/blog/blog-grid-section";
 import { NewsletterSection } from "@/components/sections/shared/newsletter-section";
+import { getBlogPosts } from "@/lib/api/blog";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Blog",
@@ -14,7 +15,9 @@ export const metadata: Metadata = generatePageMetadata({
 
 const breadcrumbs = [{ name: "Blog", url: "/blog" }];
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const posts = await getBlogPosts();
+
   return (
     <>
       <BreadcrumbSchema items={breadcrumbs} />
@@ -23,7 +26,7 @@ export default function BlogPage() {
         subtitle="Stories of impact, healthcare insights, and updates from our work across India."
         breadcrumbs={breadcrumbs}
       />
-      <BlogGridSection />
+      <BlogGridSection posts={posts} />
       <NewsletterSection />
     </>
   );

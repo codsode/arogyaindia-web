@@ -5,15 +5,18 @@ import { MissionPreviewSection } from "@/components/sections/home/mission-previe
 import { BlogPreviewSection } from "@/components/sections/home/blog-preview-section";
 import { CtaSection } from "@/components/sections/home/cta-section";
 import { NewsletterSection } from "@/components/sections/shared/newsletter-section";
+import { getBlogPosts } from "@/lib/api/blog";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const posts = await getBlogPosts(3);
+
   return (
     <>
       <HeroSection />
       <StatsSection />
       <ProgramsSection />
       <MissionPreviewSection />
-      <BlogPreviewSection />
+      <BlogPreviewSection posts={posts} />
       <CtaSection />
       <NewsletterSection />
     </>
